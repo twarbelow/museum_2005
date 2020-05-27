@@ -79,6 +79,6 @@ class MuseumTest < Minitest::Test
     @dmns.admit(@patron_2)
     @dmns.admit(@patron_3)
 
-    assert_equal [{@dead_sea_scrolls => [@patron_1, @patron_2, @patron_3], @gems_and_minerals => [@patron_1], @imax => []}], @dmns.patrons_by_exhibit_interest
+    assert_equal ({@gems_and_minerals => [@patron_1], @dead_sea_scrolls => [@patron_1, @patron_2, @patron_3], @imax => []}), @dmns.patrons_by_exhibit_interest
   end
 end
