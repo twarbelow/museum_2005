@@ -7,4 +7,10 @@ class Patron
     @interests = []
   end
 
+  def add_interest(new_interest)
+    interests << new_interest
+  end
+
+  private
+  attr_writer :interests
 end
