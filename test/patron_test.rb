@@ -19,4 +19,8 @@ class PatronTest < Minitest::Test
   def test_it_has_spending_money
     assert_equal 20, @patron_1.spending_money
   end
+
+  def test_it_has_interests
+    assert_equal [], @patron_1.interests
+  end
 end
