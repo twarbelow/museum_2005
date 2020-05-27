@@ -1,5 +1,6 @@
 class Exhibit
   def initialize(info)
-    @info = info
+    @name = info[:name]
+    @cost = info[:cost]
   end
 end
