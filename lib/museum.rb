@@ -6,4 +6,10 @@ class Museum
     @exhibits = []
   end
 
+  def add_exhibit(new_exhibit)
+    exhibits << new_exhibit
+  end
+
+  private
+  attr_writer :exhibits
 end
