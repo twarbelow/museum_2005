@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/museum'
-require './lib/patron'
+require './lib/@patron'
 require './lib/exhibit'
 
 class MuseumTest < Minitest::Test
@@ -24,12 +24,26 @@ class MuseumTest < Minitest::Test
   def test_it_has_exhibits
     assert_equal [], @dmns.exhibits
 
-
-
     @dmns.add_exhibit(@gems_and_minerals)
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
 
     assert_equal [@gems_and_minerals, @dead_sea_scrolls, @imax], @dmns.exhibits
+  end
+
+  def test_it_can_recommend_exhibits
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+
+    @patron_1 = Patron.new("Bob", 20)
+    @patron_1.add_interest("Dead Sea Scrolls")
+    @patron_1.add_interest("Gems and Minerals")
+
+    @patron_2 = Patron.new("Sally", 20)
+    @patron_2.add_interest("IMAX")
+
+    assert_equal [@gems_and_minerals, @dead_sea_scrolls], @dmns.recommend_exhibits(@patron_1)
+    assert_equal [@imax], @dmns.recommend_exhibits(@patron_2)
   end
 end
