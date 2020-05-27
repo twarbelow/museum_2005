@@ -21,6 +21,20 @@ class Museum
     patrons << new_patron
   end
 
+  def patrons_by_exhibit_interest
+    patrons_into_exhibits = {}
+    exhibits.each do |exhibit|
+      patrons_into_exhibits[exhibit] = []
+    end
+    patrons.each do |patron|
+      interests = recommend_exhibits(patron)
+      interests.each do |exhibit|
+        patrons_into_exhibits[exhibit] << patron
+      end
+    end
+    patrons_into_exhibits
+  end
+
   private
   attr_writer :exhibits, :patrons
 end
