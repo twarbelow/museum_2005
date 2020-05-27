@@ -1,9 +1,10 @@
 class Museum
-  attr_reader :name, :exhibits
+  attr_reader :name, :exhibits, :patrons
 
   def initialize(name)
     @name = name
     @exhibits = []
+    @patrons = []
   end
 
   def add_exhibit(new_exhibit)
@@ -16,6 +17,10 @@ class Museum
     end
   end
 
+  def admit(new_patron)
+    patrons << new_patron
+  end
+
   private
-  attr_writer :exhibits
+  attr_writer :exhibits, :patrons
 end
