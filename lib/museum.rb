@@ -10,6 +10,12 @@ class Museum
     exhibits << new_exhibit
   end
 
+  def recommend_exhibits(patron)
+    exhibits.find_all do |exhibit|
+      patron.interests.include?(exhibit.name)
+    end
+  end
+
   private
   attr_writer :exhibits
 end
