@@ -35,6 +35,12 @@ class Museum
     patrons_into_exhibits
   end
 
+  def ticket_lottery_contestants(exhibit)
+    patrons.find_all do |patron|
+      patron.spending_money < exhibit.cost
+    end
+  end
+
   private
   attr_writer :exhibits, :patrons
 end
